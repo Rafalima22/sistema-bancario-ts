@@ -11,7 +11,16 @@ export abstract class Conta {
         this.cliente = cliente;
     }
 
-    abstract sacar(valor: number): void;
+    abstract sacar(valor: number): boolean;
+
+    transferir(valor: number, contaDestino: Conta): void {
+        if(this.sacar(valor)) {
+            contaDestino.depositar(valor);
+            console.log(`Transferência de R$ ${valor} realizada para a conta ${contaDestino.numero}.`);
+        } else {
+            console.log("Transferencia nao realizada.");
+        }
+    }
     
     depositar(valor: number): void { 
         this.saldo += valor;
