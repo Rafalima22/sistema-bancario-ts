@@ -13,20 +13,21 @@ export abstract class Conta {
 
     abstract sacar(valor: number): boolean;
 
-    transferir(valor: number, contaDestino: Conta): void {
-        if(this.sacar(valor)) {
-            contaDestino.depositar(valor);
-            console.log(`Transferência de R$ ${valor} realizada para a conta ${contaDestino.numero}.`);
-        } else {
-            console.log("Transferencia nao realizada.");
-        }
-    }
-    
-    depositar(valor: number): void { 
-        this.saldo += valor;
-        console.log(`Depósito de R$ ${valor} realizado.`);
-        console.log(`Saldo atual: R$ ${this.saldo}`);
-    }
+    depositar(valor: number): void {
+    this.saldo += valor;
 
+    console.log(`Depósito de R$ ${valor} realizado.`);
+    console.log(`Saldo atual: R$ ${this.saldo}`);
 }
 
+    transferir(valor: number, contaDestino: Conta): boolean {
+        if (this.sacar(valor)) {
+            contaDestino.depositar(valor);
+            console.log(`Transferência de R$ ${valor} realizada para a conta ${contaDestino.numero}.`);
+            return true;
+        } else {
+            console.log("Saldo insuficiente para realizar a transferência.");
+            return false;
+        }
+    }
+}
