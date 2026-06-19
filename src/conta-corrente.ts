@@ -11,6 +11,7 @@ export class ContaCorrente extends Conta {
             return true;
         } 
         console.log("Saldo insuficiente para realizar o saque.");
+        console.log("Nao foi possível realizar o saque.");
         return false;
     }
 }

@@ -4,11 +4,13 @@ export abstract class Conta {
     protected numero: number;
     protected saldo: number; 
     protected cliente : Cliente;
+    private historico: string[];
 
     constructor(numero: number, saldo: number, cliente: Cliente) {
         this.numero = numero;
         this.saldo = saldo;
         this.cliente = cliente;
+        this.historico = [];
     }
 
     abstract sacar(valor: number): boolean;
@@ -20,6 +22,7 @@ export abstract class Conta {
     console.log(`Saldo atual: R$ ${this.saldo}`);
 }
 
+
     transferir(valor: number, contaDestino: Conta): boolean {
         if (this.sacar(valor)) {
             contaDestino.depositar(valor);
@@ -30,4 +33,6 @@ export abstract class Conta {
             return false;
         }
     }
+
+    
 }
