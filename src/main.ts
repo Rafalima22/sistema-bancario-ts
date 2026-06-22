@@ -16,12 +16,14 @@ const contaCorrente = new ContaCorrente(1001, 1000, cliente);
 const contaPoupanca = new ContaPoupanca(2001, 5000, cliente);
 const contaPoupanca2 = new ContaPoupanca(2002, 3000, cliente2);
 const contaCorrente2 = new ContaCorrente(1002, 2000, cliente2);
+const contaPoupanca3 = new ContaPoupanca(2003, 4000, cliente2);
 
 const contas: Conta[] = [
     contaCorrente,
     contaPoupanca,
     contaPoupanca2,
-    contaCorrente2
+    contaCorrente2,
+    contaPoupanca3
 ];
 
 for (const conta of contas) {
@@ -32,9 +34,10 @@ contaCorrente.depositar(500);
 contaPoupanca.depositar(1000);
 contaPoupanca2.depositar(2000);
 contaCorrente2.depositar(1500);
+contaPoupanca3.depositar(2500);
 
-contaCorrente.sacar(300);
+contaCorrente.sacar(200);
 
-contaPoupanca.sacar(500);
+contaPoupanca.sacar(400);
 
-contaPoupanca.sacar(1500);
+contaPoupanca.sacar(1400);
