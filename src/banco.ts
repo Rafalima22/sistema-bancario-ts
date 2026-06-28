@@ -6,4 +6,19 @@ export class Banco {
     constructor() {
         this.contas = [];
     }
-}
+
+    adicionarConta(conta: Conta): void {
+        this.contas.push(conta);
+        console.log(`Conta adicionada com sucesso.`);
+    }
+
+    listarContas(): void {
+    console.log("Contas cadastradas:");
+
+    for (const conta of this.contas) {
+        console.log(conta);
+    }}
+    
+
+
+}   

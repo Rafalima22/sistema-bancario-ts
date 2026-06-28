@@ -3,6 +3,7 @@ import {Cliente} from './cliente.js';
 import {ContaCorrente} from './conta-corrente.js';
 import {ContaPoupanca} from './conta-poupanca.js';
 import {Conta} from './conta.js';
+import { Banco } from "./banco.js";
 
 const endereco = new Endereco("Rua das Flores", "Recife");
 const cliente = new Cliente ("Rafael", endereco); 
@@ -41,3 +42,10 @@ contaCorrente.sacar(200);
 contaPoupanca.sacar(400);
 
 contaPoupanca.sacar(1400);
+
+const banco = new Banco();
+
+banco.adicionarConta(contaCorrente);
+banco.adicionarConta(contaPoupanca);
+
+banco.listarContas();
