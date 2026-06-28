@@ -5,6 +5,9 @@ export class ContaCorrente extends Conta {
     sacar(valor: number): boolean {
         if (this.saldo >= valor) {
             this.saldo -= valor;
+
+            this.adicionarHistorico(`Saque de R$ ${valor}`);
+            
             console.log(`Saque de R$ ${valor} realizado.`);
             console.log(`Saldo atual: R$ ${this.saldo}`);
 

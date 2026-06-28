@@ -1,51 +1,53 @@
-import {Endereco} from './endereco.js';
-import {Cliente} from './cliente.js';
-import {ContaCorrente} from './conta-corrente.js';
-import {ContaPoupanca} from './conta-poupanca.js';
-import {Conta} from './conta.js';
+import { Endereco } from "./endereco.js";
+import { Cliente } from "./cliente.js";
+import { ContaCorrente } from "./conta-corrente.js";
+import { ContaPoupanca } from "./conta-poupanca.js";
+import { Conta } from "./conta.js";
 import { Banco } from "./banco.js";
 
-const endereco = new Endereco("Rua das Flores", "Recife");
-const cliente = new Cliente ("Rafael", endereco); 
-const endereco2 = new Endereco("Rua Henrique de Lucena", "Recife");
-const cliente2 = new Cliente ("Maria", endereco2);
+const enderecoRafael = new Endereco("Rua das Flores", "Recife");
+const clienteRafael = new Cliente("Rafael", enderecoRafael);
 
+const enderecoMaria = new Endereco("Rua Henrique de Lucena", "Recife");
+const clienteMaria = new Cliente("Maria", enderecoMaria);
 
-
-
-const contaCorrente = new ContaCorrente(1001, 1000, cliente);
-const contaPoupanca = new ContaPoupanca(2001, 5000, cliente);
-const contaPoupanca2 = new ContaPoupanca(2002, 3000, cliente2);
-const contaCorrente2 = new ContaCorrente(1002, 2000, cliente2);
-const contaPoupanca3 = new ContaPoupanca(2003, 4000, cliente2);
+const contaCorrenteRafael = new ContaCorrente(1001, 1000, clienteRafael);
+const contaPoupancaRafael = new ContaPoupanca(2001, 5000, clienteRafael);
+const contaPoupancaMaria = new ContaPoupanca(2002, 3000, clienteMaria);
+const contaCorrenteMaria = new ContaCorrente(1002, 2000, clienteMaria);
+const contaPoupancaMaria2 = new ContaPoupanca(2003, 4000, clienteMaria);
 
 const contas: Conta[] = [
-    contaCorrente,
-    contaPoupanca,
-    contaPoupanca2,
-    contaCorrente2,
-    contaPoupanca3
+    contaCorrenteRafael,
+    contaPoupancaRafael,
+    contaPoupancaMaria,
+    contaCorrenteMaria,
+    contaPoupancaMaria2
 ];
 
 for (const conta of contas) {
     conta.depositar(100);
 }
 
-contaCorrente.depositar(500);
-contaPoupanca.depositar(1000);
-contaPoupanca2.depositar(2000);
-contaCorrente2.depositar(1500);
-contaPoupanca3.depositar(2500);
+contaCorrenteRafael.depositar(500);
+contaPoupancaRafael.depositar(1000);
 
-contaCorrente.sacar(200);
+contaCorrenteRafael.sacar(200);
+contaPoupancaRafael.sacar(400);
+contaPoupancaRafael.sacar(1400);
 
-contaPoupanca.sacar(400);
-
-contaPoupanca.sacar(1400);
+contaCorrenteRafael.transferir(300, contaPoupancaRafael);
 
 const banco = new Banco();
 
-banco.adicionarConta(contaCorrente);
-banco.adicionarConta(contaPoupanca);
+for (const conta of contas) {
+    banco.adicionarConta(conta);
+}
 
 banco.listarContas();
+
+console.log("\n========================");
+contaCorrenteRafael.mostrarHistorico();
+
+console.log("\n========================");
+contaPoupancaRafael.mostrarHistorico();
