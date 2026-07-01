@@ -58,4 +58,8 @@ export abstract class Conta {
     public getSaldo(): number {
     return this.saldo;
     }
+
+    public getCliente(): Cliente {
+    return this.cliente;
+    }
 }

@@ -18,6 +18,10 @@ export class Banco {
     for (const conta of this.contas) {
         console.log(conta);
     }}
+
+    buscarConta(numero: number): Conta | undefined {
+    return this.contas.find(conta => conta.getNumero() === numero);
+    }
     
 
 
