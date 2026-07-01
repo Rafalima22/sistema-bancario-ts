@@ -50,4 +50,12 @@ export abstract class Conta {
             console.log(item);
         }
     }
+
+    public getNumero(): number {
+    return this.numero;
+    }
+
+    public getSaldo(): number {
+    return this.saldo;
+    }
 }
